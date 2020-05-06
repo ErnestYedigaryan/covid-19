@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Col, Table, Container} from "reactstrap";
 
@@ -56,8 +55,8 @@ class App extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {items.map(item => (
-                            <tr>
+                        {items.map((item, index) => (
+                            <tr key={index}>
                                 {(item.provinceState === null ? <td>{item.countryRegion}</td> :
                                 <td>{item.countryRegion}, {item.provinceState}</td>)}
                                 <td>{item.confirmed}</td>
@@ -65,7 +64,7 @@ class App extends React.Component {
                                 <td>{item.deaths}</td>
                                 {this.timeFormat(item.lastUpdate)}
                             </tr>
-                        ))};
+                        ))}
                         </tbody>
                     </Table>
                 </Col>
